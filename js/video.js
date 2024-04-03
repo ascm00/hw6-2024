@@ -1,5 +1,6 @@
 const video = document.querySelector('#player1');
 let videoSpeed = 1;
+document.querySelector('#volume').innerHTML = document.querySelector('#slider').value + '%';
 
 
 window.addEventListener("load", function() {
@@ -26,13 +27,13 @@ document.querySelector("#pause").addEventListener("click", function() {
 
 
 document.querySelector("#slower").addEventListener("click", function() {
-	videoSpeed = videoSpeed - (videoSpeed*0.1);
+	videoSpeed = videoSpeed - 0.1;
 	console.log("Video speed set to " + videoSpeed);
 	video.playbackRate = videoSpeed;
  });
 
 document.querySelector("#faster").addEventListener("click", function() {
-	videoSpeed = videoSpeed + (videoSpeed*0.1);
+	videoSpeed = videoSpeed + 0.1;
 	console.log("Video speed set to " + videoSpeed);
 	video.playbackRate = videoSpeed;
  });
@@ -57,6 +58,8 @@ document.querySelector("#slider").addEventListener("change", function() {
 	volumeValue = parseInt(volumeValue)/100
 	console.log("Volume set to: " + volumeValue);
 	video.volume = volumeValue;
+
+	document.querySelector('#volume').innerHTML = volumeValue*100 + '%';
 	
  });
 
@@ -69,4 +72,6 @@ document.querySelector("#orig").addEventListener("click", function() {
 	console.log("Old schoold removed");
 	video.classList.remove('oldSchool');
  });
+
+
 
