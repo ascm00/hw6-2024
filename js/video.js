@@ -1,6 +1,6 @@
 const video = document.querySelector('#player1');
 let videoSpeed = 1;
-document.querySelector('#volume').innerHTML = document.querySelector('#slider').value + '%';
+const volume = document.querySelector('#volume');
 
 
 window.addEventListener("load", function() {
@@ -55,15 +55,10 @@ document.querySelector("#mute").addEventListener("click", function() {
 	}
  });
 
-document.querySelector("#slider").addEventListener("change", function() {
-	let volumeValue = document.querySelector('#slider').value;
-	volumeValue = parseInt(volumeValue)/100
-	console.log("Volume set to: " + volumeValue);
-	video.volume = volumeValue;
-
-	document.querySelector('#volume').innerHTML = volumeValue*100 + '%';
-	
- });
+ document.querySelector("#slider").addEventListener("change", function(e) {
+	video.volume = e.currentTarget.value / 100;
+	volume.innerHTML = e.currentTarget.value + "%";
+});
 
 document.querySelector("#vintage").addEventListener("click", function() {
 	console.log("Old schoold added");
