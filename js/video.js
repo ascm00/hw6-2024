@@ -16,6 +16,7 @@ window.addEventListener("load", function() {
 document.querySelector("#play").addEventListener("click", function() {
 	//video.autoplay = true;
  	console.log("Play Video");
+	volume.innerHTML = document.querySelector("#slider").value + "%";
 	video.play();
  });
 
